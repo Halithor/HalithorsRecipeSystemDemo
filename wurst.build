@@ -1,0 +1,10 @@
+---
+projectName: "RecipeSystemDemo"
+dependencies:
+- "https://github.com/wurstscript/wurstStdlib2"
+- "https://github.com/Halithor/HalithorsRecipeSystem"
+buildMapData:
+  name: "Halithor's Items Demo - V02"
+  fileName: "HalitorsRecipeDemo_v02"
+  author: "Halithor"
+  playerCount: 4

@@ -1,0 +1,26 @@
+package RecipeSystemConfig_config
+
+import RecipeSystemConfig
+import Demo
+
+@config public function registerItems()
+    registerItem(ITEM_ID_WOOD, "Wood") (itemId, u) -> 
+        return 5
+    registerItem(ITEM_ID_STONE, "Stone") (itemId, u) ->
+        return (u.getStr(true) / 5).toInt()
+    registerItem(ITEM_ID_STICK, "Stick") (itemId, u) ->
+        return (u.getStr(true) / 2).toInt()
+    
+
+@config public function registerRecipes()
+    // to make a stick you need to put wood in slot 1 and 3
+    registerRecipe(RECIPE_ID_STICK, ITEM_ID_STICK, asIngredientsOrdered(
+        ITEM_ID_WOOD, NO_ITEM, ITEM_ID_WOOD))
+        ..setAutomaticCraft(true)
+    registerRecipe(RECIPE_ID_AXE, ITEM_ID_AXE, asIngredientsCounted(
+        itemCount(ITEM_ID_STICK, 2),
+        itemCount(ITEM_ID_STONE, 2)
+    ))
+    registerRecipe(RECIPE_ID_SHIELD, ITEM_ID_SHIELD, asIngredientsCounted(
+        ITEM_ID_WOOD, 4
+    ))
